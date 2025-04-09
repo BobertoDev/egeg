@@ -654,15 +654,53 @@
         <div class="mobile-menu-bg"></div>
       </div>
       <div data-w-id="405905c5-639a-4118-0b3b-7037818fb578" class="menu-links">
-        <a href="index.html#the-problem" class="nav-link">Über uns</a>
-        <a href="index.html#why-saapro" class="nav-link">Unser Vorteil</a>
-        <a href="index.html#effects" class="nav-link">Information</a>
-        <a href="index.html#how-it-works" class="nav-link">Wie es funktioniert</a>
-        <a href="karriere.html" class="nav-link last">Karriere bei uns</a>
-        <a href="karriere.html" class="nav-link last">Sanierung360</a>
-        <a href="startup.html" class="nav-link last">Startup</a>
-
+        <a href="index.html#the-problem" class="nav-link">
+          <img src="Über uns.png" alt="Icon 1" class="nav-icon"> Über uns
+        </a>
+        <a href="index.html#why-saapro" class="nav-link">
+          <img src="Unser Vorteil.png" alt="Icon 2" class="nav-icon"> Unser Vorteil
+        </a>
+        <a href="index.html#effects" class="nav-link">
+          <img src="Information.png" alt="Icon 3" class="nav-icon"> Information
+        </a>
+        <a href="index.html#how-it-works" class="nav-link">
+          <img src="Wie es funktioniert.png" alt="Icon 4" class="nav-icon"> Wie es funktioniert
+        </a>
+        <a href="karriere.html" class="nav-link last">
+          <img src="Karriere bei uns.png" alt="Icon 5" class="nav-icon"> Karriere bei uns
+        </a>
+        <a href="karriere.html" class="nav-link last">
+          <img src="Sanierung.png" alt="Icon 6" class="nav-icon"> Sanierung360
+        </a>
+        <a href="startup.html" class="nav-link last">
+          <img src="Startup.png" alt="Icon 7" class="nav-icon"> Startup
+        </a>
       </div>
+
+      <style>
+        /* Стиль для ссылок в меню */
+        .menu-links .nav-link {
+          display: flex;
+          align-items: center;
+          /* Вертикальное выравнивание текста и изображения */
+          text-decoration: none;
+          /* Убираем подчеркивание у текста */
+          color: #000;
+          /* Цвет текста */
+        }
+
+        /* Стиль для изображений (иконок) */
+        .menu-links .nav-icon {
+          width: 20px;
+          /* Размер иконки */
+          height: 20px;
+          /* Размер иконки */
+          margin-right: 8px;
+          /* Отступ между иконкой и текстом */
+        }
+      </style>
+
+
       <div data-w-id="8a411493-72f2-f264-af1e-49e8b8affda7" class="dots-decor">
         <div class="dot-gray mobile-hide"></div>
         <div class="dot-gray mobile-hide"></div>
@@ -1440,9 +1478,28 @@
                 Investition in nachhaltige Energie</div>
             </div>
           </div>
-        </div><img style="margin-top: 5%;" src="solarPanels.png" loading="eager"
-          sizes="(max-width: 479px) 92vw, (max-width: 1919px) 63vw, 1280px"
+        </div>
+
+        <style>
+          .up-to-20-img {
+            width: 50%;
+            /* Ширина 50% на устройствах с большим экраном */
+            max-width: 1280px;
+            /* Максимальная ширина изображения */
+            margin-top: 5%;
+            /* Отступ сверху */
+          }
+
+          @media (max-width: 479px) {
+            .up-to-20-img {
+              width: 100vw;
+              /* На мобильных устройствах 80% ширины экрана */
+            }
+          }
+        </style>
+        <img src="solarPanels.png" loading="eager" sizes="(max-width: 479px) 80vw, (max-width: 1919px) 63vw, 1280px"
           srcset="solarPanels.png 500w, solarPanels.png 1730w" alt="" class="up-to-20-img" />
+
       </div>
     </div>
   </section>
