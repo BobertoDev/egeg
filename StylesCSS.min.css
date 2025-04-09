@@ -2552,7 +2552,8 @@ textarea.w-select {
 .sticky-logo {
   z-index: 1000;
   position: fixed;
-  inset: 2em 2em auto auto
+  inset: 2em 2em auto auto;
+  transition: opacity 0.4s ease; /* Плавность исчезновения */
 }
 
 .logo-saapro {
@@ -4794,6 +4795,7 @@ textarea.w-select {
   .sticky-logo {
     top: 2em;
     right: 2em
+    
   }
 
   .logo-saapro {
@@ -5013,12 +5015,12 @@ textarea.w-select {
     width: 3em;
     min-width: 3em;
     height: 3%;
-    min-height: 3em
+    min-height: 3em;
   }
 
   .menu-wrapper {
     padding-bottom: 2em;
-    padding-right: 2em
+    padding-right: 2em;
   }
 
   .nav-link {
