@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+
+@font-face {
+    font-family: 'BDOGrotesk';
+    src: url('./assets/fonts/BDOGrotesk-Regular-BF648a656f74a27.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+:root
+{
+    font-family: 'BDOGrotesk';
+}
+
+html
+{
+  font-size: 1vw;
+}
