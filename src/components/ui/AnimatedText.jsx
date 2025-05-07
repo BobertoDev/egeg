@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 const AnimatedText = ({
   text,
   className,
-  initial_y = 50,
+  initial_y = 20,
   delay = 0.5,
-  stagger = 0.025,
+  stagger = 0.01,
 }) => {
   const containerVariants = {
     hidden: {},

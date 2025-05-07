@@ -150,11 +150,11 @@ export default function InfiniteScroller() {
                 </div>
             </div>
 
-            <div className="flex w-[60vw] sm:w-[10.5vw] justify-between mt-10">
-                <motion.div onClick={onLeftClick} whileHover="hover" className=" w-[15vw] sm:w-[3.5vw] cursor-pointer rounded-[10px] pl-2 sm:pt-2 sm:pb-2  bg-[#409133] hover:bg-[#17ad00] flex justify-center sm:justify-start">
+            <div className="flex w-[60vw] sm:w-[10.5vw] justify-between mt-10 z-1">
+                <motion.div onClick={onLeftClick} whileHover="hover" className=" w-[15vw] sm:w-[3.5vw] cursor-pointer rounded-[10px] pl-2 sm:pt-2 sm:pb-2  bg-[#409133] hover:bg-[#17ad00] flex justify-center sm:justify-start z-100">
                     <motion.img  variants={lArrowVariant} className=" w-[10vw] sm:w-[1.5vw] " src="https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/673a42776117c3cdcc4acdc7_arrow%20left.svg" alt="arrow previous"/>
                 </motion.div>
-                <motion.div onClick={onRightClick} whileHover="hover" className=" w-[30vw] sm:w-[5vw] cursor-pointer rounded-[10px]  sm:pt-2 sm:pb-2 pr-2 bg-[#54bf44] hover:bg-[#17ad00] flex justify-end">
+                <motion.div onClick={onRightClick} whileHover="hover" className=" w-[30vw] sm:w-[5vw] cursor-pointer rounded-[10px]  sm:pt-2 sm:pb-2 pr-2 bg-[#54bf44] hover:bg-[#17ad00] flex justify-end z-100">
                     <motion.img  variants={rArrowVariant} className=" w-[10vw] sm:w-[1.5vw] " src="https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/673a43379820f5ce5a843d98_arrow%20right.svg" alt="arrow previous"/>
                 </motion.div>
             </div>

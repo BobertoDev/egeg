@@ -7,7 +7,8 @@ import InfoPage from "./components/pages/InfoPage";
 import HowItWorksPage from "./components/pages/HowItWorksPage";
 import InfiniteScroller from "./components/ui/InfiniteScroller";
 import NavMenu from "./components/ui/NavMenu";
-
+import Footer from "./components/ui/Footer";
+import CarreerPage from "./components/pages/CarreerPage";
 import AboutUsIcon from './assets/images/Über uns.png' 
 import StarIcon from './assets/images/Unser Vorteil.png'
 import InfoIcon from './assets/images/Information.png'
@@ -16,12 +17,15 @@ import CareerIcon from './assets/images/Karriere bei uns.png'
 import HouseIcon from './assets/images/Sanierung.png'
 import RocketIcon from './assets/images/Startup.png'
 
+import StartupPage from "./components/pages/StartupPage";
+
+import { useRef } from "react";
 
 const navMenuLinks = [
   {
     icon: AboutUsIcon,
     text: "Über uns",
-    link: "#"
+    link: "#about"
   },
   {
     icon: StarIcon,
@@ -41,7 +45,7 @@ const navMenuLinks = [
   {
     icon: CareerIcon,
     text: "Karriere",
-    link: "#"
+    link: "career"
   },
   {
     icon: HouseIcon,
@@ -51,13 +55,15 @@ const navMenuLinks = [
   {
     icon: RocketIcon,
     text: "Startup",
-    link: "#"
+    link: "startup"
   }
 ]
 
+
+
 export default function App() {
   const { scrollYProgress } = useScroll();
-
+  const CareerScrollRef = useRef(null);
 
   const heroOpacity = useTransform(scrollYProgress, [0, 0.025], [1, 0]);
   const aboutOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
@@ -67,7 +73,7 @@ export default function App() {
     <div>
       <div className="relative" >
 
-        {/* <div className="bg-[#263228] h-[100vh]">
+        <div className="bg-[#263228] h-[100vh]">
           <motion.div
             id={"hero"}
             style={{ opacity: heroOpacity }}
@@ -91,15 +97,20 @@ export default function App() {
           <InfoPage />
         </div>
 
-        <HowItWorksPage /> */}
+        <HowItWorksPage />
 
 
-        <NavMenu links={navMenuLinks}/>
+        <div className="fixed bottom-10 right-10">
+          <NavMenu links={navMenuLinks} />
+        </div>
 
+        
       </div>
 
+      <Footer color="#c9bca6"/>
 
 
+        {/* <StartupPage/> */}
     </div>
 
   );

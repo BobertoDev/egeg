@@ -130,7 +130,7 @@ function HowItWorksPage() {
     )
 
     return (
-        <div className='overflow-hidden'>
+        <div className=''>
             {/* Scroll/Sticky Section */}
             <div className='bg-[#263228] h-[600vh] pt-50 relative'>
                 <div ref={divRef} className='h-[300vh] w-full  absolute'></div>
@@ -191,7 +191,7 @@ function HowItWorksPage() {
             </div>
             <div className='bg-[#c9bca6] flex justify-center'>
                 <div className="w-[100vw]  flex justify-center items-center">
-                    <div className='w-[100%]'>
+                    <div className='w-[99.9%]'>
                         <InfiniteSlider items={[SliderImg1, SliderImg2, SliderImg3, SliderImg4]}></InfiniteSlider>
                     </div>
                 </div>

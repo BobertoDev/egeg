@@ -12,7 +12,7 @@ function InfoPage() {
             <div className='flex justify-center w-[95vw]'>
                 <div className='flex justify-between w-[100%]'>
                     <div className='flex flex-col text-white w-[95%] items-center'>
-                        <h1 className='text-[7rem] sm:text-[3rem] w-[90%] sm:w-[40%] '>Effizienz, die Sie brauchen.</h1>
+                        <h1 className='text-[7rem] sm:text-[3rem] w-[90%] sm:w-[40%] self-start ml-[5vw] sm:ml-[2.5vw] '>Effizienz, die Sie brauchen.</h1>
                         <div className='sm:grid grid-cols-2 gap-8  '>
                             <div className='flex flex-col w-[80vw] sm:w-[25vw] mt-20'>
                                 <img className='w-[5vw] sm:w-[2vw]' src={MaxEnergyIcon}></img>
