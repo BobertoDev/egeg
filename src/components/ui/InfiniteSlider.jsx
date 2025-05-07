@@ -50,7 +50,7 @@ function InfiniteSlider({ items }) {
           <img
             key={index}
             src={item}
-            className='w-[5%] sm:w-[9%] mr-[20px]'
+            className='w-[5%] sm:w-[25vw] mr-[20px]'
             alt={`slide-${index}`}
           />
         ))}
