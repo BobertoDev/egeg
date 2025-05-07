@@ -46,19 +46,19 @@ function NavMenu({ links }) {
     const menuVariants = {
 
         hidden: {
-            width: '27.5%',
-            height: '10%',
+            width: '0',
+            height: '0',
             transition: {
-                width: { delay: 0.1, duration: 0.3 },
-                height: { delay: 0.4, duration: 0.3 }
+                width: { delay: 0.2, duration: 0.3 },
+                height: { delay: 0.5, duration: 0.3 }
             }
         },
         visible: {
-            width: '100%',
-            height: '100%',
+            width: '30vw',
+            height: '90vh',
             transition: {
                 height: { duration: 0.3 },
-                width: { delay: 0.3, duration: 0.3 }
+                width: { delay: 0.4, duration: 0.3 }
             }
         }
 
@@ -70,7 +70,7 @@ function NavMenu({ links }) {
         visible: {
             opacity: 1,
             transition: {
-                delay: 0.5
+                delay: 0.7
             }
         },
         hidden: {
@@ -81,13 +81,13 @@ function NavMenu({ links }) {
     const [animateBox, setAnimateBox] = useState(false);
 
     return (
-        <div className='w-[55vw] h-[150vw] sm:h-[120vw] sm:w-[40vw] lg:h-[50vw] lg:w-[40vw] flex justify-end relative ml-[5vw] mt-[5vw] z-0'>
+        <div className=' flex justify-end relative ml-[5vw] mt-[5vw] z-0'>
             <motion.div
                 animate={animateBox ? "visible" : "hidden"}
                 transition={{ duration: 0.5 }}
                 variants={menuVariants}
-                className='absolute right-0 bottom-0  rounded-[3vw] lg:rounded-2xl bg-[#e2dbc9] p-15 lg:p-5 flex flex-col justify-between  '>
-                <motion.ul variants={menuContentVariants} className='h-[40%] flex flex-col justify-between'>
+                className='absolute right-0 bottom-0 rounded-2xl bg-[#e2dbc9]  p-30 sm:p-15 lg:p-10  flex flex-col justify-between  '>
+                <motion.ul variants={menuContentVariants} className=' flex flex-col justify-between'>
                     {
                         links.map((link, index) => {
                             return (
@@ -101,7 +101,7 @@ function NavMenu({ links }) {
 
                 </motion.ul>
 
-                <motion.div variants={menuContentVariants} className='flex justify-between h-[40%] mt-15'>
+                <motion.div variants={menuContentVariants} className='flex justify-between mt-15'>
                     {Array.from({ length: 10 }, (_, indexRow) => (
                         <div className='flex flex-col justify-between' key={indexRow}>
                             {
@@ -119,7 +119,7 @@ function NavMenu({ links }) {
                 <motion.h1 variants={menuContentVariants} className='text-[4rem] sm:text-[1.5rem] bg-[#54bf44] text-center self-start p-5 pr-15 pl-15 sm:pr-5 sm:pl-5 rounded-3xl'>Kontakt</motion.h1>
             </motion.div>
 
-            <div className='absolute bottom-15 right-15 sm:bottom-12 sm:right-12 lg:bottom-5 lg:right-15 w-[7.5vw] h-[7.5vw] sm:w-[5vw] sm:h-[5vw] lg:w-[3vw] lg:h-[3vw] flex  rounded-3xl'>
+            <div className='absolute bottom-15 right-15 sm:bottom-[1.1vw] sm:right-[1.1vw] lg:bottom-[1vw] lg:right-[1vw] w-[7.5vw] h-[7.5vw] sm:w-[5vw] sm:h-[5vw] lg:w-[3vw] lg:h-[3vw] flex  rounded-3xl'>
 
                 <motion.div
                     className='flex flex-col justify-between w-[100%] h-[100%] cursor-pointer'
