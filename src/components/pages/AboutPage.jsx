@@ -34,7 +34,7 @@ function AboutPage() {
                 >
                     <img src={SolarCounterIcon} alt="Solar Counter" className="h-auto  mt-5 self-start" />
                     <h2 className='text-white text-[18px] '>PV-Anlagen</h2>
-                    <h2 className='text-[2rem] text-[#f5bf42]'>573</h2>
+                    <h2 className='text-[4rem] sm:text-[2rem] text-[#f5bf42]'>573</h2>
                     <h2 className='text-white text-[16px] mb-2 '>Installationen</h2>
                 </motion.div>
 
@@ -45,7 +45,7 @@ function AboutPage() {
                 >
                     <img src={WPCounterIcon} alt="WP Counter" className="h-auto  mt-5 self-start" />
                     <h2 className='text-white text-[18px] '>Wärmepumpe</h2>
-                    <h2 className='text-[2rem] text-[#f5bf42]'>533</h2>
+                    <h2 className='text-[4rem] sm:text-[2rem] text-[#f5bf42]'>533</h2>
                     <h2 className='text-white text-[16px] mb-2 '>Installationen</h2>
                 </motion.div>
 
@@ -57,7 +57,7 @@ function AboutPage() {
                 >
                     <img src={TaskCounterIcon} alt="Task Counter" className="h-auto  mt-5 self-start" />
                     <h2 className='text-white text-[18px] '>Vorbereitende Arbeiten</h2>
-                    <h2 className='text-[2rem] text-[#f5bf42]'>573</h2>
+                    <h2 className='text-[4rem] sm:text-[2rem] text-[#f5bf42]'>573</h2>
                     <h2 className='text-white text-[16px] mb-2 '>Termine</h2>
                 </motion.div>
             </div>

@@ -24,7 +24,7 @@ function HeroPage() {
                 initial={{ scale: 0.95 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 1, ease: "easeOut" }}
-                className='h-[100vh] w-[98vw] sm:  rounded-4xl bg-[radial-gradient(circle,_#b1b1b1,_#646464)] flex flex-col justify-between mt-[2.5vh] mb-[2.5vh]'
+                className='h-[95vh] w-[98vw] sm:  rounded-4xl bg-[radial-gradient(circle,_#b1b1b1,_#646464)] flex flex-col justify-between mt-[2.5vh] mb-[2.5vh]'
             >
 
                 <div className='flex justify-between items-center '>
