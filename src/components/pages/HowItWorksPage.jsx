@@ -28,7 +28,7 @@ function getXOffsetStable(ref, setter) {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const center = rect.left + rect.width / 2;
-    const offset = window.innerWidth / 2 - center;
+    const offset = document.documentElement.clientWidth / 2 - center;
     setter(offset);
 }
 
