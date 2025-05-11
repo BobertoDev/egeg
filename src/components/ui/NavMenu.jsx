@@ -7,8 +7,8 @@ function NavMenu({ links }) {
     const menuBtnRef = useRef(null);
     const [menuBtnWidth, setMenuBtnWidth] = useState(0);
     const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
-    const [navMenuWidth, setNavMenuWidth] = useState(30);
-    const [navMenuHeight, setNavMenuHeight] = useState(90);
+    const [navMenuWidth, setNavMenuWidth] = useState("30vw");
+    const [navMenuHeight, setNavMenuHeight] = useState("90vh");
 
     useEffect(() => {
         
@@ -16,17 +16,17 @@ function NavMenu({ links }) {
             setViewportWidth(window.innerWidth);
 
             if(window.innerWidth < 640) {
-                setNavMenuWidth(50);
-                setNavMenuHeight(65);
+                setNavMenuWidth("50vw");
+                setNavMenuHeight("90vw");
             }
             else if(window.innerWidth < 1024) {
-                setNavMenuWidth(30);
-                setNavMenuHeight(90);
+                setNavMenuWidth("30vw");
+                setNavMenuHeight("90vh");
             }
             else
             {
-                setNavMenuWidth(20);
-                setNavMenuHeight(90);
+                setNavMenuWidth("20vw");
+                setNavMenuHeight("90vh");
             }
         }
 
@@ -86,8 +86,8 @@ function NavMenu({ links }) {
             }
         },
         visible: {
-            width: `${navMenuWidth}vw`,
-            height: `${navMenuHeight}vh`,
+            width: `${navMenuWidth}`,
+            height: `${navMenuHeight}`,
             transition: {
                 height: { duration: 0.3 },
                 width: { delay: 0.4, duration: 0.3 }
@@ -148,7 +148,7 @@ function NavMenu({ links }) {
 
 
 
-                <motion.h1 variants={menuContentVariants} className='text-[4rem] sm:text-[1.5rem] bg-[#54bf44] text-center self-start p-5 pr-15 pl-15 sm:pr-5 sm:pl-5 rounded-3xl '>Kontakt</motion.h1>
+                <motion.h1 variants={menuContentVariants} className='text-[4rem] sm:text-[1.5rem] bg-[#54bf44] text-center self-start  pr-15 pl-15 sm:pr-5 sm:pl-5 rounded-3xl '>Kontakt</motion.h1>
             </motion.div>
 
             <div className='absolute bottom-15 right-15 sm:bottom-[1.1vw] sm:right-[1.1vw] lg:bottom-[1vw] lg:right-[1vw] w-[7.5vw] h-[7.5vw] sm:w-[5vw] sm:h-[5vw] lg:w-[3vw] lg:h-[3vw] flex  rounded-3xl'>

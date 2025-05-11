@@ -9,6 +9,7 @@ import SliderImg1 from "../../assets/images/ImgLine1R.png"
 import SliderImg2 from "../../assets/images/ImgLine2R.png"
 import SliderImg3 from "../../assets/images/ImgLine3R.png"
 import SliderImg4 from "../../assets/images/ImgLine4R.png"
+import { throttle } from 'lodash'
 
 function SlidingText({ text, id }) {
     return (
@@ -23,42 +24,42 @@ function SlidingText({ text, id }) {
     )
 }
 
-function getXOffset(ref, s) {
+function getXOffsetStable(ref, setter) {
+    if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    const elemCenterX = rect.left + rect.width / 2;
-    const viewportCenterX = window.innerWidth / 2;
-    s(viewportCenterX - elemCenterX);
+    const center = rect.left + rect.width / 2;
+    const offset = window.innerWidth / 2 - center;
+    setter(offset);
 }
 
 function HowItWorksPage() {
     const divRef = useRef(null);
     const houseRef = useRef(null);
     const leafRef = useRef(null);
+    const houseWrapperRef = useRef(null);
+    const leafWrapperRef = useRef(null);
 
     const [contentWidth, setContentWidth] = useState(0);
     const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
-
     const [houseOffsetX, setHouseOffsetX] = useState(0);
     const [leafOffsetX, setLeafOffsetX] = useState(0);
 
     useEffect(() => {
-        const updateSize = () => {
+        const updateOffsets = () => {
+            getXOffsetStable(houseWrapperRef, setHouseOffsetX);
+            getXOffsetStable(leafWrapperRef, setLeafOffsetX);
             if (divRef.current) {
                 setViewportWidth(window.innerWidth);
                 setContentWidth(divRef.current.scrollWidth);
             }
-            if (houseRef.current)
-                getXOffset(houseRef, setHouseOffsetX)
-            if (leafRef.current)
-                getXOffset(leafRef, setLeafOffsetX)
         };
 
-        updateSize();
+        const throttledResize = throttle(updateOffsets, 300);
+        updateOffsets();
 
-        window.addEventListener('resize', updateSize);
-
+        window.addEventListener('resize', throttledResize);
         return () => {
-            window.removeEventListener('resize', updateSize);
+            window.removeEventListener('resize', throttledResize);
         };
     }, []);
 
@@ -76,67 +77,27 @@ function HowItWorksPage() {
     const xPos = useTransform(smoothProgress, [0, 1], [0, -contentWidth]);
     const headingAnimation = useTransform(smoothProgress, [0.1, 0.4], [0, -viewportWidth - 50]);
 
-    const houseXAnimation = useTransform(smoothProgress,
-        [0.1, 0.2],
-        [0, houseOffsetX]);
+    const houseXAnimation = useTransform(smoothProgress, [0.1, 0.2], [0, houseOffsetX]);
+    const leafXAnimation = useTransform(smoothProgress, [0.1, 0.2, 0.4, 0.45], [0, houseOffsetX, houseOffsetX, leafOffsetX]);
+    const leafColorAnimation = useTransform(smoothProgress, [0.2, 0.4, 0.9, 1], ["#54bf44", "#ffffff10", "#ffffff10", "#52bf44"]);
+    const leafScaleAnimation = useTransform(smoothProgress, [0.45, 0.5], [1, 3]);
 
-    const leafColorAnimation = useTransform(smoothProgress,
-        [0.2, 0.4, 0.9, 1],
-        ["#54bf44", "#ffffff10", "#ffffff10", "#52bf44"]
-    )
+    const ellipseFirstOpacity = useTransform(smoothProgress, [0.5, 0.6, 0.7, 0.8], [0, 1, 1, 0]);
+    const ellipseFirstScale = useTransform(smoothProgress, [0.5, 0.6], [0, 3]);
+    const ellipseSecondOpacity = useTransform(smoothProgress, [0.6, 0.7, 0.7, 0.8], [0, 1, 1, 0]);
+    const ellipseSecondScale = useTransform(smoothProgress, [0.6, 0.7], [0, 2]);
 
-    const leafXAnimation = useTransform(smoothProgress,
-        [0.1, 0.2, 0.4, 0.45],
-        [0, houseOffsetX, houseOffsetX, leafOffsetX]);
-
-    const leafScaleAnimation = useTransform(smoothProgress,
-        [0.45, 0.5],
-        [1, 3]
-    );
-
-    const ellipseFirstOpacity = useTransform(smoothProgress,
-        [0.5, 0.6, 0.7, 0.8],
-        [0, 1, 1, 0]
-    )
-
-    const ellipseFirstScale = useTransform(smoothProgress,
-        [0.5, 0.6],
-        [0, 3]
-    )
-
-    const ellipseSecondOpacity = useTransform(smoothProgress,
-        [0.6, 0.7, 0.7, 0.8],
-        [0, 1, 1, 0]
-    )
-
-    const ellipseSecondScale = useTransform(smoothProgress,
-        [0.6, 0.7],
-        [0, 2]
-    )
-
-    const houseOpacity = useTransform(smoothProgress,
-        [0.7, 0.8, 0.85, 0.9],
-        [1, 0.3, 0.3, 0]
-    )
-
-    const figureColor = useTransform(smoothProgress,
-        [0.9, 1],
-        ["#52b843", "#263228"]
-    )
-
-    const figureScale = useTransform(smoothProgress,
-        [0, 0.75, 0.9, 1],
-        [0, 0, 1, 5.5]
-    )
+    const houseOpacity = useTransform(smoothProgress, [0.7, 0.8, 0.85, 0.9], [1, 0.3, 0.3, 0]);
+    const figureColor = useTransform(smoothProgress, [0.9, 1], ["#52b843", "#263228"]);
+    const figureScale = useTransform(smoothProgress, [0, 0.75, 0.9, 1], [0, 0, 1, 5.5]);
 
     return (
-        <div className=''>
-            {/* Scroll/Sticky Section */}
+        <div>
             <div className='bg-[#263228] h-[600vh] pt-50 relative'>
-                <div ref={divRef} className='h-[300vh] w-full  absolute'></div>
+                <div ref={divRef} className='h-[300vh] w-full absolute'></div>
 
-                <div className='sticky flex flex-col h-[75vh]  top-[20vh] md:top-[0] md:h-[100vh] overflow-x-hidden justify-around overflow-hidden'>
-                    <div className='sm:self-end mr-[27.5vw] flex items-center mt-10'>
+                <div className='sticky flex flex-col h-[75vh] top-[20vh] md:top-[0] md:h-[100vh] overflow-x-hidden justify-around overflow-hidden'>
+                    <div className='sm:self-end sm:mr-[27.5vw] self-center flex items-center mt-10'>
                         <motion.h1 style={{ x: headingAnimation }} className='text-white text-[15rem] sm:text-[7rem] font-bold'>
                             Super <br />Plan
                         </motion.h1>
@@ -155,14 +116,18 @@ function HowItWorksPage() {
                             </motion.svg>
                         </motion.div>
 
-                        <motion.img ref={houseRef} style={{ x: houseXAnimation, opacity: houseOpacity }} className='w-[15vw] sm:w-[5vw] h-auto' src={GreenHouseIcon} />
-                        <motion.div ref={leafRef} style={{ x: leafXAnimation, scale: leafScaleAnimation }} className='w-[15vw] sm:w-[5vw] mr-5 z-1'>
-                            <motion.svg width="100%" height="100%" viewBox="0 0 83 83" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <motion.path style={{ fill: leafColorAnimation }}
-                                    d="M0 0.999999C0 0.447715 0.447715 0 1 0H42C64.6437 0 83 18.3563 83 41V82C83 82.5523 82.5523 83 82 83H41C18.3563 83 0 64.6437 0 42V0.999999Z"
-                                    fill="#54bf44" />
-                            </motion.svg>
-                        </motion.div>
+                        <div ref={houseWrapperRef} className="relative w-[15vw] sm:w-[5vw] h-[15vw] sm:h-[5vw]">
+                            <motion.img ref={houseRef} style={{ x: houseXAnimation, opacity: houseOpacity }} className='w-[15vw] sm:w-[5vw] h-auto absolute' src={GreenHouseIcon} />
+                        </div>
+                        <div ref={leafWrapperRef} className="relative w-fit h-fit mr-5 z-1">
+                            <motion.div ref={leafRef} style={{ x: leafXAnimation, scale: leafScaleAnimation }} className='w-[15vw] sm:w-[5vw]'>
+                                <motion.svg width="100%" height="100%" viewBox="0 0 83 83" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <motion.path style={{ fill: leafColorAnimation }}
+                                        d="M0 0.999999C0 0.447715 0.447715 0 1 0H42C64.6437 0 83 18.3563 83 41V82C83 82.5523 82.5523 83 82 83H41C18.3563 83 0 64.6437 0 42V0.999999Z"
+                                        fill="#54bf44" />
+                                </motion.svg>
+                            </motion.div>
+                        </div>
                     </div>
 
                     <div className='flex flex-col'>
@@ -181,18 +146,17 @@ function HowItWorksPage() {
             </div>
 
             <div className='bg-[#c9bca6] flex flex-col sm:flex-row sm:justify-between relative pb-50 pt-50 max-[500px]:h-[100vh]'>
-                <img src='https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/673a3c5500a0d08adf931c9e_light-circles.avif' className='absolute top-25 w-[40vw]'></img>
+                <img src='https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/673a3c5500a0d08adf931c9e_light-circles.avif' className='absolute top-25 w-[40vw]' />
                 <h1 className=" text-[8rem] sm:text-[4rem] text-[#322d24]  ml-10">Weshalb wir die beste sind</h1>
                 <div className='flex flex-col sm:w-[55vw] pr-5 pl-5'>
                     <InfiniteScroller />
                 </div>
-
-
             </div>
+
             <div className='bg-[#c9bca6] flex justify-center'>
-                <div className="w-[99vw]  flex justify-center items-center">
+                <div className="w-[99vw] flex justify-center items-center">
                     <div className='w-[100%]'>
-                        <InfiniteSlider items={[SliderImg1, SliderImg2, SliderImg3, SliderImg4]}></InfiniteSlider>
+                        <InfiniteSlider items={[SliderImg1, SliderImg2, SliderImg3, SliderImg4]} />
                     </div>
                 </div>
             </div>
