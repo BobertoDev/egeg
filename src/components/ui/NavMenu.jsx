@@ -1,17 +1,49 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { delay, motion, scale } from 'framer-motion'
+import { throttle } from 'lodash';
 
 function NavMenu({ links }) {
 
     const menuBtnRef = useRef(null);
     const [menuBtnWidth, setMenuBtnWidth] = useState(0);
-
+    const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+    const [navMenuWidth, setNavMenuWidth] = useState(30);
+    const [navMenuHeight, setNavMenuHeight] = useState(90);
 
     useEffect(() => {
+        
+        const updateSize = () => {
+            setViewportWidth(window.innerWidth);
+
+            if(window.innerWidth < 640) {
+                setNavMenuWidth(50);
+                setNavMenuHeight(65);
+            }
+            else if(window.innerWidth < 1024) {
+                setNavMenuWidth(30);
+                setNavMenuHeight(90);
+            }
+            else
+            {
+                setNavMenuWidth(20);
+                setNavMenuHeight(90);
+            }
+        }
+
         if (menuBtnRef.current) {
             setMenuBtnWidth(menuBtnRef.current.offsetWidth);
             console.log(menuBtnRef.current.offsetWidth);
         }
+        
+        const throttledUpdateSize = throttle(updateSize, 200);
+        updateSize();
+
+        window.addEventListener('resize', throttledUpdateSize);
+
+
+        return () => {
+            window.removeEventListener('resize', updateSize);
+        };
     }, [])
 
     const menuBtnVariants = {
@@ -46,16 +78,16 @@ function NavMenu({ links }) {
     const menuVariants = {
 
         hidden: {
-            width: '0',
-            height: '0',
+            width: '0.1vw',
+            height: '0.1vh',
             transition: {
                 width: { delay: 0.2, duration: 0.3 },
                 height: { delay: 0.5, duration: 0.3 }
             }
         },
         visible: {
-            width: '30vw',
-            height: '90vh',
+            width: `${navMenuWidth}vw`,
+            height: `${navMenuHeight}vh`,
             transition: {
                 height: { duration: 0.3 },
                 width: { delay: 0.4, duration: 0.3 }
@@ -87,7 +119,7 @@ function NavMenu({ links }) {
                 transition={{ duration: 0.5 }}
                 variants={menuVariants}
                 className='absolute right-0 bottom-0 rounded-2xl bg-[#e2dbc9]  p-30 sm:p-15 lg:p-10  flex flex-col justify-between  '>
-                <motion.ul variants={menuContentVariants} className=' flex flex-col justify-between'>
+                <motion.ul variants={menuContentVariants} className=' flex flex-col justify-between h-[40%]'>
                     {
                         links.map((link, index) => {
                             return (
@@ -101,7 +133,7 @@ function NavMenu({ links }) {
 
                 </motion.ul>
 
-                <motion.div variants={menuContentVariants} className='flex justify-between mt-15'>
+                <motion.div variants={menuContentVariants} className='flex justify-between mt-15 h-[30%]'>
                     {Array.from({ length: 10 }, (_, indexRow) => (
                         <div className='flex flex-col justify-between' key={indexRow}>
                             {
@@ -116,7 +148,7 @@ function NavMenu({ links }) {
 
 
 
-                <motion.h1 variants={menuContentVariants} className='text-[4rem] sm:text-[1.5rem] bg-[#54bf44] text-center self-start p-5 pr-15 pl-15 sm:pr-5 sm:pl-5 rounded-3xl'>Kontakt</motion.h1>
+                <motion.h1 variants={menuContentVariants} className='text-[4rem] sm:text-[1.5rem] bg-[#54bf44] text-center self-start p-5 pr-15 pl-15 sm:pr-5 sm:pl-5 rounded-3xl '>Kontakt</motion.h1>
             </motion.div>
 
             <div className='absolute bottom-15 right-15 sm:bottom-[1.1vw] sm:right-[1.1vw] lg:bottom-[1vw] lg:right-[1vw] w-[7.5vw] h-[7.5vw] sm:w-[5vw] sm:h-[5vw] lg:w-[3vw] lg:h-[3vw] flex  rounded-3xl'>
