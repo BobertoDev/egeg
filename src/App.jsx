@@ -17,6 +17,8 @@ import CareerIcon from './assets/images/Karriere bei uns.png'
 import HouseIcon from './assets/images/Sanierung.png'
 import RocketIcon from './assets/images/Startup.png'
 
+import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
+
 import StartupPage from "./components/pages/StartupPage";
 
 import { useRef } from "react";
@@ -35,12 +37,12 @@ const navMenuLinks = [
   {
     icon: InfoIcon,
     text: "Information",
-    link: "#"
+    link: "#info"
   },
   {
     icon: GearIcon,
     text: "Wie es funktioniert",
-    link: "#"
+    link: "#howitworks"
   },
   {
     icon: CareerIcon,
@@ -60,8 +62,8 @@ const navMenuLinks = [
 ]
 
 
+const MainPage = () => {
 
-export default function App() {
   const { scrollYProgress } = useScroll();
   const CareerScrollRef = useRef(null);
 
@@ -69,8 +71,10 @@ export default function App() {
   const aboutOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
   const aboutY = useTransform(scrollYProgress, [0, 0.1], [0, 0]);
 
+
   return (
     <div>
+
       <div className="relative" >
 
         <div className="bg-[#263228] h-[100vh]">
@@ -108,9 +112,32 @@ export default function App() {
       </div>
 
       <Footer color="#c9bca6"/>
+    </div>
+  )
+}
 
 
-        {/* <StartupPage/> */}
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainPage />
+  },
+  {
+    path: "/startup",
+    element: <StartupPage />
+  }
+
+
+]);
+
+export default function App() {
+
+  return (
+    <div>
+
+      <RouterProvider router={router} />  
+
+
     </div>
 
   );
