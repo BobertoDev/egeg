@@ -5,14 +5,16 @@ import StaatlicheIcon from "../../assets/images/StaatlicheIcon.png"
 import BestSolutionIcon from "../../assets/images/DieBesteLosungIcon.png"
 import FutureIcon from "../../assets/images/zukunftssIcon.png"
 import AnimatedText from '../ui/AnimatedText';
+import { motion } from 'framer-motion';
+
 
 function InfoPage() {
     return (
-        <div className='bg-[#263228] rounded-tl-3xl rounded-tr-3xl flex flex-col items-center '>
+        <div className='bg-[#263228] rounded-tl-3xl rounded-tr-3xl flex flex-col items-center ' id='info'>
             <div className='flex justify-center w-[95vw]'>
                 <div className='flex justify-between w-[100%]'>
                     <div className='flex flex-col text-white w-[95%] items-center'>
-                        <h1 className='text-[7rem] sm:text-[3rem] w-[90%] sm:w-[40%] self-start ml-[5vw] sm:ml-[2.5vw] '>Effizienz, die Sie brauchen.</h1>
+                        <AnimatedText text={"Effizienz, die Sie brauchen."} className="text-[7rem] sm:text-[3rem] w-[90%] sm:w-[35%] self-start ml-[5vw] sm:ml-[2.5vw] mt-15" initial_y={15} stagger={0.015} delay={0} />
                         <div className='sm:grid grid-cols-2 gap-8  '>
                             <div className='flex flex-col w-[80vw] sm:w-[25vw] mt-20'>
                                 <img className='w-[5vw] sm:w-[2vw]' src={MaxEnergyIcon}></img>
@@ -43,12 +45,13 @@ function InfoPage() {
                 </div>
                 
             </div>
-            <div className='w-[95vw] bg-[#ffffff10] flex flex-col sm:flex-row justify-between p-10 rounded-4xl text-white mt-15'>
+            <motion.div initial={{y: 50}} whileInView={{y: 0}} transition={{duration: 0.5}}  className='w-[95vw] bg-[#ffffff10] flex flex-col sm:flex-row justify-between p-10 rounded-4xl text-white mt-15'>
                 <h2 className=' text-[5rem] sm:text-[2rem] sm:w-[40%]'>Bereit für Ihre Energiewende? Kontaktieren Sie uns!</h2>
                 <div className='flex'>
-                    <button className='bg-white text-black h-fit pt-2.5 pb-2.5 pl-10 pr-10 rounded-[5vw] self-end sm:text-[1rem] text-[4rem] sm:mt-0 mt-30'>Kontakt</button>
+                    <button className='bg-white text-[#263228] hover:text-[#54bf44] h-fit pt-2.5 pb-2.5 pl-10 pr-10 rounded-[5vw] self-end 
+                    sm:text-[1rem] text-[4rem] sm:mt-0 mt-30 hover:bg-[#052f21] hover:cursor-pointer transition-colors duration-300'>Kontakt</button>
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }

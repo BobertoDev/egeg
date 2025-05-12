@@ -8,7 +8,6 @@ import HowItWorksPage from "./components/pages/HowItWorksPage";
 import InfiniteScroller from "./components/ui/InfiniteScroller";
 import NavMenu from "./components/ui/NavMenu";
 import Footer from "./components/ui/Footer";
-import CarreerPage from "./components/pages/CarreerPage";
 import AboutUsIcon from './assets/images/Über uns.png' 
 import StarIcon from './assets/images/Unser Vorteil.png'
 import InfoIcon from './assets/images/Information.png'
@@ -16,6 +15,7 @@ import GearIcon from './assets/images/Wie es funktioniert.png'
 import CareerIcon from './assets/images/Karriere bei uns.png'
 import HouseIcon from './assets/images/Sanierung.png'
 import RocketIcon from './assets/images/Startup.png'
+import CareerPage from "./components/pages/CareerPage";
 
 import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
 
@@ -32,7 +32,7 @@ const navMenuLinks = [
   {
     icon: StarIcon,
     text: "Unsere Vorteile",
-    link: "#"
+    link: "#features"
   },
   {
     icon: InfoIcon,
@@ -52,7 +52,7 @@ const navMenuLinks = [
   {
     icon: HouseIcon,
     text: "Sanierung360",
-    link: "#"
+    link: "career"
   },
   {
     icon: RocketIcon,
@@ -96,7 +96,7 @@ const MainPage = () => {
           <AboutPage />
 
         </motion.div>
-        <div className="bg-[#c9bca6]">
+        <div className="bg-[#c9bca6]" id="features">
           <OurFeatures />
           <InfoPage />
         </div>
@@ -104,7 +104,7 @@ const MainPage = () => {
         <HowItWorksPage />
 
 
-        <div className="fixed bottom-10 right-10">
+        <div className="fixed bottom-10 right-10 z-2">
           <NavMenu links={navMenuLinks} />
         </div>
 
@@ -125,8 +125,11 @@ const router = createBrowserRouter([
   {
     path: "/startup",
     element: <StartupPage />
+  },
+  {
+    path: "/career",
+    element: <CareerPage />
   }
-
 
 ]);
 

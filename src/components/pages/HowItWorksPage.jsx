@@ -10,6 +10,7 @@ import SliderImg2 from "../../assets/images/ImgLine2R.png"
 import SliderImg3 from "../../assets/images/ImgLine3R.png"
 import SliderImg4 from "../../assets/images/ImgLine4R.png"
 import { throttle } from 'lodash'
+import AnimatedText from '../ui/AnimatedText'
 
 function SlidingText({ text, id }) {
     return (
@@ -92,7 +93,7 @@ function HowItWorksPage() {
     const figureScale = useTransform(smoothProgress, [0, 0.75, 0.9, 1], [0, 0, 1, 5.5]);
 
     return (
-        <div>
+        <div id='howitworks'>
             <div className='bg-[#263228] h-[600vh] pt-50 relative'>
                 <div ref={divRef} className='h-[300vh] w-full absolute'></div>
 
@@ -145,12 +146,18 @@ function HowItWorksPage() {
                 </div>
             </div>
 
-            <div className='bg-[#c9bca6] flex flex-col sm:flex-row sm:justify-between relative pb-50 pt-50 max-[500px]:h-[100vh]'>
+            <div className='bg-[#c9bca6] flex flex-col sm:flex-row sm:justify-between relative pb-50 pt-50 max-[500px]:h-[100vh] overflow-hidden'>
                 <img src='https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/673a3c5500a0d08adf931c9e_light-circles.avif' className='absolute top-25 w-[40vw]' />
-                <h1 className=" text-[8rem] sm:text-[4rem] text-[#322d24]  ml-10">Weshalb wir die beste sind</h1>
-                <div className='flex flex-col sm:w-[55vw] pr-5 pl-5'>
-                    <InfiniteScroller />
+                {/* <motion.h1 className=" text-[8rem] sm:text-[4rem] text-[#322d24] ml-10">Weshalb wir die beste sind</motion.h1> */}
+                <div>
+                    <AnimatedText delay={0.25} initial_y={30} text={"Weshalb"} className=" text-[8rem] sm:text-[4rem] text-[#322d24] ml-10" />
+                    <AnimatedText delay={0.3} initial_y={30} text={"wie die"} className=" text-[8rem] sm:text-[4rem] text-[#322d24] ml-10" />
+                    <AnimatedText delay={0.35} initial_y={30} text={"beste sind"} className=" text-[8rem] sm:text-[4rem] text-[#322d24] ml-10" />
                 </div>
+
+                <motion.div initial={{x: 100}} whileInView={{x: 0}} className='flex flex-col sm:w-[55vw] pr-5 pl-5'>
+                    <InfiniteScroller />
+                </motion.div>
             </div>
 
             <div className='bg-[#c9bca6] flex justify-center'>

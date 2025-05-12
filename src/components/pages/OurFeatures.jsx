@@ -5,6 +5,8 @@ import EffizienzIcon from '../../assets/images/Effizienz.png';
 import UmweltfreundlichIcon from '../../assets/images/Umweltfreundlich.png';
 import Wirtschaftlich from '../../assets/images/Wirtschaftlich.png';
 import SolarPanelsIcon from '../../assets/images/solarPanels.png'
+import { motion } from 'framer-motion'; 
+
 
 const cards = [
   {
@@ -37,6 +39,24 @@ const cards = [
 ];
 
 
+const featuresCards = [
+  {
+    percentage: '60%',
+    title: 'Energieeinsparung',
+    description: "Maximale Reduzierung Ihrer Stromkosten durch hocheffiziente Solartechnologie.",
+  },
+  {
+    percentage: '90%',
+    title: 'Eigenverbrauch',
+    description: "Nutzen Sie Ihren selbst erzeugten Solarstrom direkt und reduzieren Sie Ihre Abhängigkeit vom Netz.",
+  },
+  {
+    percentage: '100%',
+    title: 'Beste Investitionen',
+    description: "Mehr als 90 % Leistung auch nach 25 Jahren – eine langfristige Investition in nachhaltige Energie",
+  }
+]
+
 function OurFeatures() {
 
   const scrollingCardRef = useRef(null);
@@ -60,32 +80,25 @@ function OurFeatures() {
         <h1 className='text-[10rem] sm:text-[5rem]'>Wärmepumpen und Solarenergie</h1>
         <p className='text-[4rem] sm:text-[1.5rem] mb-15 '>Effizient & nachhaltig</p>
         
-        <div className='flex sm:flex-row flex-col justify-between w-[95%] '>
-          <div className='flex flex-col  bg-[#d9cdb7] p-[5vw] sm:p-[1vw] rounded-4x w-[90vw] sm:w-[30vw] rounded-3xl mb-20'>
-            <p className='text-[5rem] sm:text-[1.9rem] rounded-full bg-[#1f3b32] w-[13vw] h-[13vw] sm:w-[5vw] sm:h-[5vw] flex items-center justify-center text-[#e2dbc9] mb-5'>60%</p>
-            <div className=''>
-              <h2 className='text-[6rem] sm:text-[2.5rem] text-[#1f3b32]'>Energieeinsparung</h2>
-              <p className='text-[3rem] sm:text-[1vw] text-[#1f3b32]'>Maximale Reduzierung Ihrer Stromkosten durch hocheffiziente Solartechnologie.</p>
-            </div>
-          </div>
-          
-          <div className='flex flex-col  bg-[#d9cdb7] p-[5vw] sm:p-[1vw] rounded-4x w-[90vw] sm:w-[30vw] rounded-3xl mb-20'>
-            <p className='text-[5rem] sm:text-[1.9rem] rounded-full bg-[#1f3b32] w-[13vw] h-[13vw] sm:w-[5vw] sm:h-[5vw] flex items-center justify-center text-[#e2dbc9] mb-5'>90%</p>
-            <div className=''>
-              <h2 className='text-[6rem] sm:text-[2.5rem] text-[#1f3b32]'>Eigenverbrauch</h2>
-              <p className='text-[3rem] sm:text-[1vw] text-[#1f3b32]'>Nutzen Sie Ihren selbst erzeugten Solarstrom direkt und reduzieren Sie Ihre Abhängigkeit vom Netz.              </p>
-            </div>
-          </div>
 
-          <div className='flex flex-col  bg-[#d9cdb7] p-[5vw] sm:p-[1vw] rounded-4x w-[90vw] sm:w-[30vw] rounded-3xl mb-20'>
-            <p className='text-[5rem] sm:text-[1.9rem] rounded-full bg-[#1f3b32] w-[13vw] h-[13vw] sm:w-[5vw] sm:h-[5vw] flex items-center justify-center text-[#e2dbc9] mb-5'>100%</p>
-            <div className=''>
-              <h2 className='text-[6rem] sm:text-[2.5rem] text-[#1f3b32]'>Beste Investitionen</h2>
-              <p className='text-[3rem] sm:text-[1vw] text-[#1f3b32]'>Mehr als 90 % Leistung auch nach 25 Jahren – eine langfristige Investition in nachhaltige Energie</p>
-            </div>
-          </div>
+        
+
+        <div className='flex sm:flex-row flex-col justify-between w-[95%] '>
+
+          {
+            featuresCards.map((card, index) => (
+              <motion.div transition={{duration: 0.5, delay: index*0.1}} initial={{y: 200, opacity: 0}} whileInView={{y: 0, opacity: 1}} key={index} className='flex flex-col  bg-[#d9cdb7] p-[5vw] sm:p-[1vw] rounded-4x w-[90vw] sm:w-[30vw] rounded-3xl mb-20'>
+                <p className='text-[5rem] sm:text-[1.9rem] rounded-full bg-[#1f3b32] w-[13vw] h-[13vw] sm:w-[5vw] sm:h-[5vw] flex items-center justify-center text-[#e2dbc9] mb-5'>{card.percentage}</p>
+                <div className=''>
+                  <h2 className='text-[6rem] sm:text-[2.5rem] text-[#1f3b32]'>{card.title}</h2>
+                  <p className='text-[3rem] sm:text-[1vw] text-[#1f3b32]'>{card.description}</p>
+                </div>
+              </motion.div>
+            ))
+          }
+
         </div>
-        <img src={SolarPanelsIcon} alt='Solar Panel' className='w-[90vw] sm:w-[50vw]'></img>
+        <motion.img initial={{y: 70}} whileInView={{y: 0}} transition={{duration: 0.5}} src={SolarPanelsIcon} alt='Solar Panel' className='w-[90vw] sm:w-[50vw]'></motion.img>
       </div>
     </div>
   )
