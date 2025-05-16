@@ -123,7 +123,7 @@ function BlogPagePresent({ blogData, currentPage, setCurrentPage, totalPages }) 
                                         <motion.img draggable={false} className=' transition-transform duration-300  w-[100%] group-hover:scale-110' alt={entry.title} src="http://localhost:3000/images/placeholder.jpg" />
                                     </div>
                                     <motion.h1 initial={{ x: 20 }} whileInView={{ x: 0 }} className='text-[4rem] sm:text-[2rem] lg:text-[1.5rem]'>{entry.title} | {entry.author}</motion.h1>
-                                    <motion.p className='text-[2rem] sm:text-[1rem]'>{entry.content_md.slice(0, 150) + '...'}</motion.p>
+                                    <motion.p className='text-[2rem] sm:text-[1rem]'>{entry.summary}</motion.p>
                                 </motion.div>
                             )
                         })

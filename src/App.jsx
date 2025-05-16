@@ -8,7 +8,7 @@ import HowItWorksPage from "./components/pages/HowItWorksPage";
 import InfiniteScroller from "./components/ui/InfiniteScroller";
 import NavMenu from "./components/ui/NavMenu";
 import Footer from "./components/ui/Footer";
-import AboutUsIcon from './assets/images/Über uns.png' 
+import AboutUsIcon from './assets/images/Über uns.png'
 import StarIcon from './assets/images/Unser Vorteil.png'
 import InfoIcon from './assets/images/Information.png'
 import GearIcon from './assets/images/Wie es funktioniert.png'
@@ -20,9 +20,9 @@ import BlogPage from "./components/pages/BlogPage";
 import BlogPostPage from "./components/pages/BlogPostPage";
 import BlogIocn from "./assets/images/blogIcon.svg";
 import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
-
+import AdminBlogPanel from "./components/pages/AdminBlogPanel";
 import StartupPage from "./components/pages/StartupPage";
-
+import LoginPage from "./components/pages/LoginPage";
 import { useRef } from "react";
 
 const navMenuLinks = [
@@ -97,7 +97,7 @@ const MainPage = () => {
         </div>
         <motion.div
 
-          style={{  y: aboutY }}
+          style={{ y: aboutY }}
           className=" z-2"
         >
           <AboutPage />
@@ -115,10 +115,10 @@ const MainPage = () => {
           <NavMenu links={navMenuLinks} />
         </div>
 
-        
+
       </div>
 
-      <Footer color="#c9bca6"/>
+      <Footer color="#c9bca6" />
     </div>
   )
 }
@@ -139,12 +139,21 @@ const router = createBrowserRouter([
   },
   {
     path: "/blog",
-    element: <BlogPage/>
+    element: <BlogPage />
+  },
+  {
+    path: "/blog/:id",
+    element: <BlogPostPage />
+  },
+  {
+    path: "/blogPanel",
+    element: <AdminBlogPanel />
   },
     {
-    path: "/blog/:id",
-    element: <BlogPostPage/>
+    path: "/login",
+    element: <LoginPage />
   }
+
 
 ]);
 
@@ -153,7 +162,7 @@ export default function App() {
   return (
     <div>
 
-      <RouterProvider router={router} />  
+      <RouterProvider router={router} />
 
 
     </div>
