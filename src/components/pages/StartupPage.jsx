@@ -72,7 +72,7 @@ function StartupPage() {
             <div className='flex flex-col items-center text-[#322d24] sm:pt-25 pt-100 '>
                 <div className='flex flex-col items-center'>
                     <AnimatedText className="text-[8rem] sm:text-[4.5rem] font-bold" text={"StartUP: Ihr Weg zum Erfolg!"} initial_y={40}  />
-                    <AnimatedText className="text-[3.5rem] sm:text-[1rem]" text={"Innovativ & skalierbar!"} />
+                    <AnimatedText className="text-[3.5rem] sm:text-[1rem] mt-10" text={"Innovativ & skalierbar!"} />
                 </div>
 
                 <div className='w-[95vw] flex items-center mt-15'>

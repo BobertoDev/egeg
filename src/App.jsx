@@ -16,7 +16,9 @@ import CareerIcon from './assets/images/Karriere bei uns.png'
 import HouseIcon from './assets/images/Sanierung.png'
 import RocketIcon from './assets/images/Startup.png'
 import CareerPage from "./components/pages/CareerPage";
-
+import BlogPage from "./components/pages/BlogPage";
+import BlogPostPage from "./components/pages/BlogPostPage";
+import BlogIocn from "./assets/images/blogIcon.svg";
 import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
 
 import StartupPage from "./components/pages/StartupPage";
@@ -58,6 +60,11 @@ const navMenuLinks = [
     icon: RocketIcon,
     text: "Startup",
     link: "startup"
+  },
+  {
+    icon: BlogIocn,
+    text: "Blog",
+    link: "/blog"
   }
 ]
 
@@ -129,6 +136,14 @@ const router = createBrowserRouter([
   {
     path: "/career",
     element: <CareerPage />
+  },
+  {
+    path: "/blog",
+    element: <BlogPage/>
+  },
+    {
+    path: "/blog/:id",
+    element: <BlogPostPage/>
   }
 
 ]);

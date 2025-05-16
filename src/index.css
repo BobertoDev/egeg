@@ -17,3 +17,43 @@ html
 {
   font-size: 1vw;
 }
+/* Add heading styles to Tailwind's base layer */
+@layer base {
+  h1 {
+    @apply text-[10rem] sm:text-[6rem] lg:text-[4rem] font-bold;
+  }
+
+  h2 {
+    @apply text-[6rem] sm:text-[3rem] lg:text-[2rem] font-semibold;
+  }
+
+  h3  {
+    @apply text-[4rem] font-semibold;
+  }
+
+  h4 {
+    @apply text-xl font-medium;
+  }
+
+  h5 {
+    @apply text-lg font-medium;
+  }
+
+  h6 {
+    @apply text-base font-medium;
+  }
+
+  p {
+    @apply text-[4rem] sm:text-[2rem] lg:text-[1.1rem] leading-relaxed;
+  }
+
+  li {
+    @apply text-[4rem] sm:text-[2rem] lg:text-[1.1rem] leading-relaxed;
+  }
+  
+  code {
+    @apply text-[1.8rem] sm:text-[2rem] lg:text-[1.1rem] leading-relaxed;
+  }
+}
+
+

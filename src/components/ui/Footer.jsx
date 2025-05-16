@@ -7,7 +7,7 @@ function Footer({color}) {
   return (
     <div style={{backgroundColor: `${color}`, borderColor: `${color}`}} className=' pt-50 p-5'>
         <div className='relative bg-[#263228] rounded-4xl flex flex-col items-center h-fit  '>
-            <a className='absolute left-[10vw] top-[10vw] text-[2rem] text-black bg-white rounded-[5vw] p-2 pr-10 pl-10'>Kontakt</a>
+            <a className='absolute left-[10vw] top-[10vw] text-[2rem] text-black bg-white rounded-[5vw] p-2 pr-10 pl-10 cursor-pointer '>Kontakt</a>
             <img className="w-[95vw] h-[50vh] md:h-[80vh] object-cover rounded-[3vw] mt-20" src={FoooterBg}></img>
             <img src="https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/673a55d098fc4326f5141ce0_circles-footer-img.png" className='absolute right-5 bottom-5 w-[30%] h-fit opacity-50 z-0'/>
         

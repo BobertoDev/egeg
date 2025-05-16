@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { delay, motion, scale } from 'framer-motion'
 import { throttle } from 'lodash';
 
-function NavMenu({ links }) {
+function NavMenu({ links, standardSelected="" }) {
 
     const menuBtnRef = useRef(null);
     const [menuBtnWidth, setMenuBtnWidth] = useState(0);
@@ -10,13 +10,17 @@ function NavMenu({ links }) {
     const [navMenuWidth, setNavMenuWidth] = useState("30vw");
     const [navMenuHeight, setNavMenuHeight] = useState("90vh");
 
-    const [navMenuEntrySelected, setNavMenuEntrySelected] = useState("");
+    const [navMenuEntrySelected, setNavMenuEntrySelected] = useState(standardSelected);
 
 
     function handleMenuEntryClick(entry) {
+        
         setNavMenuEntrySelected(entry);
     }
 
+    useEffect(() => {
+    setNavMenuEntrySelected(standardSelected);
+    }, [standardSelected]);
 
 
     useEffect(() => {
@@ -134,7 +138,7 @@ function NavMenu({ links }) {
                             return (
                                 <li key={index} className='flex text-[4rem] sm:text-[1.5rem] items-center'>
                                     <img className="mr-5 w-[6vw] sm:w-[3vw] lg:w-[1.5vw]" src={link.icon} />
-                                    <a onClick={() => handleMenuEntryClick(link.text)} className={`text-[2rem] md:text-[1rem] hover:font-bold transition-transform duration-300 hover:scale-105 ${navMenuEntrySelected === link.text ? 'font-bold' : 'font-normal'}`} href={link.link}>{link.text}</a>
+                                    <a onClick={() => handleMenuEntryClick(link.text)} className={`text-[2rem] md:text-[1rem] hover:font-bold origin-left transition-transform duration-300 hover:scale-125 ${navMenuEntrySelected === link.text ? 'font-extrabold scale-125 ' : 'font-normal'}`} href={link.link}>{link.text}</a>
                                 </li>
                             )
                         })
@@ -188,7 +192,7 @@ function NavMenu({ links }) {
 
                     <motion.div
                         variants={bottomDotVariants}
-                        className='w-[1vw] h-[1vw] sm:w-[10px] sm:h-[10px] bg-[#000000] self-center rounded-full  '
+                        className='w-[1vw] h-[1vw] sm:w-[10px] sm:h-[10px] bg-[#000000] self-center rounded-full'
                     />
                 </motion.div>
 
